@@ -1,0 +1,38 @@
+[
+ {
+	"Photo":"image.png",
+	"Background":"bg.jpg",
+	"Name":"Trần Hữu Phước",
+	"Description":"Student at University of Science",
+	"Country":"TP Ho Chi Minh - Viet Nam", 	
+	"Industry":"Programing", 
+	"Contact":"huuphuoc3304@gmail.com",
+	"Education": "Studying about programing at University of Science",
+	"Headline":"\"I have nothing to say\"",
+	"Summaryicon":"summary.jpg",
+	"Experienceicon":"Experience.jpg",
+	"Projecticon":"project.png",
+	"Skillicon":"skill.jpg",
+	"Educationicon":"education.png"
+ },
+ {
+	"Summary1":"Junior at  University of Science",
+	"Summary2":"Studying about Software Engineering",
+	"Summary3":"Hobies: playing games, traveling.."
+ },
+ {
+	"Experience":"No Experience"
+ },
+ {
+	"Project1":"My Paint",
+	"Project2":"Caro Online Gomoku"
+ },
+ {
+	"Skill1":"Programing language: C, C++, C#, Java, HTMT CSS",
+	"Skill2":"IDE: Visual Studio 2012, Android Studio, Notepat++",
+	"Skill3":"Teamwork, softskills, English"
+ },
+ {
+	"Education":"Junior at University of Science"
+ }
+]

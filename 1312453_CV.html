@@ -1,101 +1,194 @@
 <!DOCTYPE html>
 <html>
 <head>
-<style>
-</style>
+	<meta charset="utf-8" />
+    <title>My_CV</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/default.css" type="text/css">
+	<script src = "js/angular.min.js"></script>
+	<script src="js/handle.js"></script>
+	<link href="css/xeditable.css" rel="stylesheet">
+	<script src="js/xeditable.js"></script>
 </head>
-<script src="angular.min.js"></script>
 <body style="background-color: silver">
 
 <div ng-app="myApp" ng-controller="myCtrl">
-	<div style="text-align:center ; font-size:200%; color:white; padding-top:50px"><b><i>{{myData[0].Headline}}</i></b></div>
+	<div style="text-align:center ; font-size:200%; color:white; padding-top:50px">
+		<span editable-text="myData.HEADLINES.Content" e-form="HlImgForm" e-required>
+			<b><i>{{ myData.HEADLINES.Content || 'empty' }}</i></b>
+		</span>
+		<img src = {{myData.IMAGES.Editicon}} ng-click="HlImgForm.$show()" ng-hide="HlImgForm.$visible" style="height:30px; width:30px"/>
+	</div>
 	<div style="width: 960px; margin: 50px auto; background-color: white">
-		<img src = {{myData[0].Photo}} alt="Myavatar" style="float:left;width:200px;height:200px;margin:30px;30px;30px;30px;">
-		<div style="font-size:150%; padding-top:50px;"><b>{{myData[0].Name}}</b></div>
-		<div style="font-size:150%; color:silver"><b>{{myData[0].Description}}</b></div>
-		<div style="font-size:100%; padding-bottom: 20px; color:silver"><b>{{myData[0].Country}} | {{myData[0].Industry}} </b></div>
+		<img src = {{myData.IMAGES.Avatar}} alt="Myavatar" style="float:left;width:200px;height:200px;margin:30px;30px;30px;30px;">
+		<div style="font-size:150%; padding-top:50px;">
+			<span editable-text="myData.PROFILE.Name" e-form="NameImgForm" e-required>
+				<b>{{ myData.PROFILE.Name || 'empty' }}</b>
+			</span>
+			<img src = {{myData.IMAGES.Editicon}} ng-click="NameImgForm.$show()" ng-hide="NameImgForm.$visible" style="height:20px; width:20px"/>
+		</div>
+		<div style="font-size:150%; color:silver;"">
+			<span editable-text="myData.PROFILE.Description" e-form="discribeImgForm" e-required>
+				<b>{{ myData.PROFILE.Description || 'empty' }}</b>
+			</span>
+			<img src = {{myData.IMAGES.Editicon}} ng-click="discribeImgForm.$show()" ng-hide="discribeImgForm.$visible" style="height:20px; width:20px"/>
+		</div>
+		<div style="font-size:120%; padding-bottom: 20px; color:silver;">
+			<span editable-text="myData.PROFILE.Country" e-form="countryImgForm" e-required>
+				<b>{{ myData.PROFILE.Country || 'empty' }}</b>
+			</span>
+			<img src = {{myData.IMAGES.Editicon}} ng-click="countryImgForm.$show()" ng-hide="countryImgForm.$visible" style="height:20px; width:20px"/>
+			<span><b> | </b></span>
+			<span editable-text="myData.PROFILE.Industry" e-form="industryImgForm" e-required>
+				<b>{{ myData.PROFILE.Industry || 'empty' }}</b>
+			</span>
+			<img src = {{myData.IMAGES.Editicon}} ng-click="industryImgForm.$show()" ng-hide="industryImgForm.$visible" style="height:20px; width:20px"/>
+		</div>
 		<div style="font-size:100%; color:silver; display:inline"><b>Contact Info: </b></div>
-		<div style="font-size:100%; color:black; display:inline"><b>{{myData[0].Contact}}</b></div>
+		<div style="font-size:100%; color:black; display:inline">
+			<span editable-text="myData.PROFILE.Contact" e-form="contactImgForm" e-required>
+				<b><i>{{ myData.PROFILE.Contact || 'empty' }}</i></b>
+			</span>
+			<img src = {{myData.IMAGES.Editicon}} ng-click="contactImgForm.$show()" ng-hide="contactImgForm.$visible" style="height:15px; width:15px"/>
+		</div>
 		<div style="clear"/>
-		<div style="font-size:100%; color:silver; display:inline"><b>Education: </b></div>
-		<div style="font-size:100%; color:black; display:inline"><b>{{myData[0].Education}}</b></div>
 		<div style="clear:both"/>
-		<div style="width: 100%; height:20px; background-color: silver; color:silver; margin-bottom:9px">hidden</div>
+		<div style="width: 100%; height:20px; background-color: silver; color:silver; margin-bottom:8px"></div>
 		<span style="font-size:100%; color:white; background:black; border: none; padding:10px ;"><b>Background</b></span>
 		<div style="margin-left:30px; margin-right:30px; margin-top: 50px">
-			<img src = {{myData[0].Summaryicon}} alt="summaryicon" style = "float:left; width:30px; height:35px; margin:10px;10px;10px;10px;"/>
-			<div style="font-size:100%; color:silver; padding-top:15px"><b>Summary</b></div>
+			<img src = {{myData.IMAGES.Summaryicon}} alt="summaryicon" style = "float:left; width:30px; height:35px; margin:10px;10px;10px;10px;"/>
+			<div style="font-size:120%; color:silver; padding-top:15px;display:inline;"><b>Summary</b></div>
+			<button style=" display:inline;margin-top:15px;" ng-click="showaddsum=true">Add Summary</button>
+			<div style="clear:both"/>
 			<div style = "padding-top:15px">
 				<ul>
-					<li>{{myData[1].Summary1}}</li>
-					<li>{{myData[1].Summary2}}</li>
-					<li>{{myData[1].Summary3}}</li>
+					<li ng-repeat="summary in myData.SUMMARY">
+						<div style="font-size:100%; color:black;">
+							<span editable-text="summary.value" e-form="summaryImgForm" e-required>
+								<b>{{ summary.value || 'empty' }}</b>
+							</span>
+							<img src = {{myData.IMAGES.Editicon}} ng-click="summaryImgForm.$show()" ng-hide="summaryImgForm.$visible" style="height:15px; width:15px"/>
+						</div>
+					</li>
 </				</ul>
+				<form ng-show="showaddsum" style="margin-top:20px">
+					<label> + Summary:</label>
+					<input type="text" ng-model="summary" placeholder="Summary" ng-required/>
+					<input  type="button"  value="Save" ng-click="AddSummary()">
+					<input  type="button"  value="Cancel" ng-click="CanSummary()">
+				</form>
 			</div>
 			<div style = "clear:both"/>
 		</div>
 		<hr style="border-top: 1px solid silver;">
 		<div style=" margin-top: 30px">
-			<img src = {{myData[0].Experienceicon}} alt="Experienceicon" style = "float:left; width:30px; height:35px; margin:10px;10px;10px;10px;"/>
-			<div style="font-size:100%; color:silver; padding-top:15px"><b>Experience</b></div>
+			<img src = {{myData.IMAGES.Experienceicon}} alt="Experienceicon" style = "float:left; width:30px; height:35px; margin:10px;10px;10px;10px;"/>
+			<div style="font-size:120%; color:silver; padding-top:15px; display:inline"><b>Experience</b></div>
+			<button style="display:inline; margin-top:15px;" ng-click="showaddexp=true">Add Experience</button>
+			<div style="clear"/>
 			<div style = "padding-top:15px">
 				<ul>
-					<li>{{myData[2].Experience}}</li>
+					<li ng-repeat="Experience in myData.EXPERIENCE">
+						<div style="font-size:100%; color:black; ">
+							<span editable-text="Experience.value" e-form="expImgForm" e-required>
+								<b>{{ Experience.value || 'empty' }}</b>
+							</span>
+							<img src = {{myData.IMAGES.Editicon}} ng-click="expImgForm.$show()" ng-hide="expImgForm.$visible" style="height:15px; width:15px"/>
+						</div>
+					</li>
 </				</ul>
+				<form ng-show="showaddexp" style="margin-top:20px">
+					<label> + Experience:</label>
+					<input type="text" ng-model="exp" placeholder="Experience" ng-required/>
+					<input  type="button"  value="Save" ng-click="AddExp()">
+					<input  type="button"  value="Cancel" ng-click="CanExp()">
+				</form>
 			</div>
 			<div style = "clear:both"/>
 		</div>
 		<hr style="border-top: 1px solid silver;">
 		<div style=" margin-top: 30px">
-			<img src = {{myData[0].Projecticon}} alt="projecticon" style = "float:left; width:30px; height:35px; margin:10px;10px;10px;10px;"/>
-			<div style="font-size:100%; color:silver; padding-top:15px"><b>Project</b></div>
+			<img src = {{myData.IMAGES.Projecticon}} alt="projecticon" style = "float:left; width:30px; height:35px; margin:10px;10px;10px;10px;"/>
+			<div style="font-size:120%; color:silver; padding-top:15px; display:inline"><b>Project</b></div>
+			<button style="display:inline; margin-top:15px;" ng-click="showaddpro=true">Add Project</button>
+			<div style="clear"/>
 			<div style = "padding-top:15px">
 				<ul>
-					<li>{{myData[3].Project1}}</li>
-					<li>{{myData[3].Project2}}</li>
+					<li ng-repeat="project in myData.PROJECT">
+						<div style="font-size:100%; color:black;">
+							<span editable-text="project.value" e-form="prjImgForm" e-required>
+								<b>{{ project.value || 'empty' }}</b>
+							</span>
+							<img src = {{myData.IMAGES.Editicon}} ng-click="prjImgForm.$show()" ng-hide="prjImgForm.$visible" style="height:15px; width:15px"/>
+						</div>
+					</li>
 </				</ul>
+				<form ng-show="showaddpro" style="margin-top:20px">
+					<label> + Project:</label>
+					<input type="text" ng-model="pro" placeholder="Project" ng-required/>
+					<input  type="button"  value="Save" ng-click="AddPro()">
+					<input  type="button"  value="Cancel" ng-click="CanPro()">
+				</form>
 			</div>
 			<div style = "clear:both"/>
 		</div>
 		<hr style="border-top: 1px solid silver;">
 		<div style=" margin-top: 30px">
-			<img src = {{myData[0].Skillicon}} alt="skillicon" style = "float:left; width:30px; height:35px; margin:10px;10px;10px;10px;"/>
-			<div style="font-size:100%; color:silver; padding-top:15px"><b>Skill</b></div>
+			<img src = {{myData.IMAGES.Skillicon}} alt="skillicon" style = "float:left; width:30px; height:35px; margin:10px;10px;10px;10px;"/>
+			<div style="font-size:120%; color:silver; padding-top:15px; display:inline"><b>Skill</b></div>
+			<button style="display:inline; margin-top:15px;"ng-click="showaddskil=true">Add Skill</button>
+			<div style="clear"/>
 			<div style = "padding-top:15px">
 				<ul>
-					<li>{{myData[4].Skill1}}</li>
-					<li>{{myData[4].Skill2}}</li>
-					<li>{{myData[4].Skill3}}</li>
+					<li ng-repeat="skill in myData.SKILL">
+						<div style="font-size:100%; color:black;">
+							<span editable-text="skill.value" e-form="skillImgForm" e-required>
+								<b>{{ skill.value || 'empty' }}</b>
+							</span>
+							<img src = {{myData.IMAGES.Editicon}} ng-click="skillImgForm.$show()" ng-hide="skillImgForm.$visible" style="height:15px; width:15px"/>
+						</div>
+					</li>
 </				</ul>
+				<form ng-show="showaddskil" style="margin-top:20px">
+					<label> + Skill:</label>
+					<input type="text" ng-model="skil" placeholder="Skill" ng-required/>
+					<input  type="button"  value="Save" ng-click="AddSkil()">
+					<input  type="button"  value="Cancel" ng-click="CanSkil()">
+				</form>
 			</div>
 			<div style = "clear:both"/>
 		</div>
 		<hr style="border-top: 1px solid silver;">
 		<div style=" margin-top: 30px">
-			<img src = {{myData[0].Educationicon}} alt="educationicon" style = "float:left; width:30px; height:35px; margin:10px;10px;10px;10px;"/>
-			<div style="font-size:100%; color:silver; padding-top:15px"><b>Education</b></div>
+			<img src = {{myData.IMAGES.Educationicon}} alt="educationicon" style = "float:left; width:30px; height:35px; margin:10px;10px;10px;10px;"/>
+			<div style="font-size:120%; color:silver; padding-top:15px; display:inline"><b>Education</b></div>
+			<button style="display:inline; margin-top:15px;" ng-click="showaddedu=true">Add Education</button>
+			<div style="clear"/>
 			<div style = "padding-top:15px">
 				<ul>
-					<li>{{myData[5].Education}}</li>
+					<li ng-repeat="education in myData.EDUCATION">
+						<div style="font-size:100%; color:black;">
+							<span editable-text="education.value" e-form="eduImgForm" e-required>
+								<b>{{ education.value || 'empty' }}</b>
+							</span>
+							<img src = {{myData.IMAGES.Editicon}} ng-click="eduImgForm.$show()" ng-hide="eduImgForm.$visible" style="height:15px; width:15px"/>
+						</div>
+					</li>
 </				</ul>
+				<form ng-show="showaddedu" style="margin-top:20px">
+					<label> + Education:</label>
+					<input type="text" ng-model="edu" placeholder="Education" ng-required/>
+					<input  type="button"  value="Save" ng-click="AddEdu()">
+					<input  type="button"  value="Cancel" ng-click="CanEdu()">
+				</form>
 			</div>
 			<div style = "clear:both"/>
 		</div>
 		<hr style="border-top: 1px solid silver;">
-		<div style = "height:60px; color:white">end</div>
+		<div style = "height:60px; color:white"></div>
 	</div>
-
 </div>
-
-<script>
-var app = angular.module('myApp', []);
-app.controller('myCtrl', function($scope, $http) {
-  $http.get('data.json')
-  .success(function(response) {
-      $scope.myData = response;
-  });
-});
-</script>
-
 </body>
 </html>

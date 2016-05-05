@@ -1,38 +1,56 @@
-[
- {
-	"Photo":"image.png",
-	"Background":"bg.jpg",
-	"Name":"Trần Hữu Phước",
-	"Description":"Student at University of Science",
-	"Country":"TP Ho Chi Minh - Viet Nam", 	
-	"Industry":"Programing", 
-	"Contact":"huuphuoc3304@gmail.com",
-	"Education": "Studying about programing at University of Science",
-	"Headline":"\"I have nothing to say\"",
-	"Summaryicon":"summary.jpg",
-	"Experienceicon":"Experience.jpg",
-	"Projecticon":"project.png",
-	"Skillicon":"skill.jpg",
-	"Educationicon":"education.png"
- },
- {
-	"Summary1":"Junior at  University of Science",
-	"Summary2":"Studying about Software Engineering",
-	"Summary3":"Hobies: playing games, traveling.."
- },
- {
-	"Experience":"No Experience"
- },
- {
-	"Project1":"My Paint",
-	"Project2":"Caro Online Gomoku"
- },
- {
-	"Skill1":"Programing language: C, C++, C#, Java, HTMT CSS",
-	"Skill2":"IDE: Visual Studio 2012, Android Studio, Notepat++",
-	"Skill3":"Teamwork, softskills, English"
- },
- {
-	"Education":"Junior at University of Science"
- }
-]
+{
+		"HEADLINES":
+		{
+			"Content":"\"I have nothing to say\""
+		},
+		"IMAGES":
+		{
+			"Avatar":"images/image.png",
+			"Summaryicon":"images/summary.jpg",
+			"Experienceicon":"images/experience.jpg",
+			"Projecticon":"images/project.png",
+			"Skillicon":"images/skill.jpg",
+			"Educationicon":"images/education.png",
+			"Editicon":"images/editicon.png"
+		},
+					
+		"PROFILE":
+		{	
+				"Name":"Trần Hữu Phước",
+				"Description":"Student at University of Sciences, Ho Chi Minh City",
+				"Country":"TP Ho Chi Minh - Viet Nam",
+				"Industry":"Programming",
+				"Contact":"huuphuoc3304@gmail.com"		
+		},		
+		"SUMMARY":
+		[
+			{"value":"Junior at University of Science."},
+			{"value":"Studying about Software Engineering."},
+			{"value":"Hobies: playing games, traveling..."}
+		],
+		
+		"EXPERIENCE":
+		[
+			{"value":"No Experience."}
+		],
+		
+			
+		"PROJECT":
+		[
+			{"value":"My paint."},
+			{"value":"Caro Online Gomoku."}
+		],
+		
+		"SKILL":
+		[
+			{"value":"Programing language: C, C++, C#, Java, HTMT CSS."},
+			{"value":"IDE: Visual Studio 2012, Android Studio, Notepat++."},
+			{"value":"Teamwork, softskills, English."}
+		],
+		
+		"EDUCATION":
+		[
+			{"value":"Junior at University of Sciences, Ho Chi Minh City."}
+		]
+}
+		
